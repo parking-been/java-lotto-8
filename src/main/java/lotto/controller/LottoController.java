@@ -31,7 +31,7 @@ public class LottoController {
     }
 
     private void calculateTheResults(){
-
+        lottoService.calculateResult();
     }
 
     //당첨 내역 출력
