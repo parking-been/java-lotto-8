@@ -14,7 +14,7 @@ public class OutputView {
         System.out.println(INPUT_MONEY_MESSAGE);
     }
 
-    public void printIputLuckNumbers(){
+    public void printIputLuckyNumbers(){
         System.out.println(INPUT_LUCK_NUMBERS);
     }
 

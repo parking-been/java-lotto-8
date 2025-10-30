@@ -17,11 +17,12 @@ public class InputView {
 
     public int getInteger(){
         String value = getInput().trim();
-        return inputValidator.validatePriceofLottos(value);
+        return inputValidator.validateStringToInteger(value);
     }
 
     public List<Integer> getListOfNumbers(){
-        return null;
+        String value = getInput().trim();
+        return inputValidator.validateStringToIntList(value);
     }
 
 

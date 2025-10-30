@@ -23,7 +23,27 @@ class InputViewTest {
 
         IllegalArgumentException e = assertThrows(
                 IllegalArgumentException.class,
-                ()->inputValidator.validatePriceofLottos("5!!4")
+                ()->inputValidator.validateStringToInteger("5!!4")
+        );
+
+        assertThat(e.getMessage()).isEqualTo(ErrorMessage.INVALID_NUMBER_INPUT.getMessage());
+    }
+
+    @Test
+    void 로또_당첨_번호_입력(){
+
+        assertAll(
+                ()->assertThat(inputValidator.validateStringToIntList("1,2,3")).isEqualTo(List.of(1,2,3)),
+                ()->assertThat(inputValidator.validateStringToIntList("1,2,")).isEqualTo(List.of(1,2))
+                );
+
+    }
+
+    @Test
+    void 로또_당첨_번호_입력_예외(){
+        IllegalArgumentException e = assertThrows(
+                IllegalArgumentException.class,
+                ()->inputValidator.validateStringToIntList("1,2,3+")
         );
 
         assertThat(e.getMessage()).isEqualTo(ErrorMessage.INVALID_NUMBER_INPUT.getMessage());

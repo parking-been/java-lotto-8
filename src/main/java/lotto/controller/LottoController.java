@@ -20,7 +20,8 @@ public class LottoController {
 
     public void run(){
         prepareLottoGame();
-        displayWinningResults();
+        calculateTheResults();
+        displayTheResults();
         displayProfitRate();
     }
 
@@ -28,8 +29,13 @@ public class LottoController {
     private void displayIssuedLottos(){
         outputView.printIssuedLottos(lottoService.getAllLottos());
     }
+
+    private void calculateTheResults(){
+
+    }
+
     //당첨 내역 출력
-    private void displayWinningResults(){
+    private void displayTheResults(){
 
     }
     //수익률 출력
@@ -40,8 +46,7 @@ public class LottoController {
     private void prepareLottoGame(){
         buyLottos();
         displayIssuedLottos();
-        getLuckyNumbers();
-        getBonusNumber();
+        getLuckyandBonusNumbers();
     }
 
     //로또 구매
@@ -52,12 +57,12 @@ public class LottoController {
     }
 
     //당첨 번호 받기
-    private void getLuckyNumbers(){
-
-    }
-
-    private void getBonusNumber(){
-
+    private void getLuckyandBonusNumbers(){
+        outputView.printIputLuckyNumbers();
+        List<Integer> luckyNumbers = inputView.getListOfNumbers();
+        outputView.printInputBonusNumber();
+        int bonusNumber = inputView.getInteger();
+        lottoService.setWinningLotto(luckyNumbers,bonusNumber);
     }
 
 }
