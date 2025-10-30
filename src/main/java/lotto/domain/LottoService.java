@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LottoService {
     private LottoRepository lottoRepository;
@@ -15,5 +16,9 @@ public class LottoService {
     public void buyLottos(int price){
         ArrayList<Lotto> listOfLottos = lottoGenerator.createLottos(price);
         lottoRepository.saveAll(listOfLottos);
+    }
+
+    public List<Lotto> getAllLottos(){
+        return lottoRepository.findAll();
     }
 }

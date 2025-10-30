@@ -13,4 +13,12 @@ public class LottoRepository {
     public void saveAll(List<Lotto> lottos){
         this.lottos.addAll(lottos);
     }
+
+    public List<Lotto> findAll(){
+        return List.copyOf(lottos);
+    }
+
+    public int getSize(){
+        return lottos.size();
+    }
 }

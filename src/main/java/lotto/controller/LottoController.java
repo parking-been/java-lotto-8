@@ -1,8 +1,11 @@
 package lotto.controller;
 
+import lotto.domain.Lotto;
 import lotto.domain.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
+
+import java.util.List;
 
 public class LottoController {
     private final InputView inputView;
@@ -23,7 +26,7 @@ public class LottoController {
 
     //발행한 로또 수량 및 번호 출력
     private void displayIssuedLottos(){
-
+        outputView.printIssuedLottos(lottoService.getAllLottos());
     }
     //당첨 내역 출력
     private void displayWinningResults(){
