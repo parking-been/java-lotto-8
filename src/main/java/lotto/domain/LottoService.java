@@ -14,6 +14,6 @@ public class LottoService {
 
     public void buyLottos(int price){
         ArrayList<Lotto> listOfLottos = lottoGenerator.createLottos(price);
-
+        lottoRepository.saveAll(listOfLottos);
     }
 }
