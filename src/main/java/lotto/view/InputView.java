@@ -1,11 +1,30 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.domain.InputValidator;
 import lotto.exception.ErrorMessage;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class InputView {
+
+    private final InputValidator inputValidator;
+
+    public InputView(InputValidator inputValidator) {
+        this.inputValidator = inputValidator;
+    }
+
+    public int getPriceofLottos(){
+        String value = getInput().trim();
+        return inputValidator.validatePriceofLottos(value);
+    }
+
+    public List<Integer> getWinningNumbers(){
+        return null;
+    }
+
+
     public String getInput(){
         try{
             return Console.readLine();

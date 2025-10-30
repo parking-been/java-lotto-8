@@ -41,8 +41,9 @@ public class LottoController {
     }
 
     //로또 구매 - 입출력 받기
-    private void buyLottos(){
-        
+    private int buyLottos(){
+        outputView.printInputMoneyMessage();
+        return inputView.getPriceofLottos();
     }
 
     //당첨 번호 받기

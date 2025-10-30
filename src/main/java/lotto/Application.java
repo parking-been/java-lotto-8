@@ -8,7 +8,8 @@ import lotto.view.OutputView;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        InputView inputView = new InputView();
+        InputValidator inputValidator = new InputValidator();
+        InputView inputView = new InputView(inputValidator);
         OutputView outputView = new OutputView();
         LottoGenerator lottoGenerator = new LottoGenerator();
         LottoRepository lottoRepository = new LottoRepository(lottoGenerator);
