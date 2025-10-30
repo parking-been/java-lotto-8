@@ -11,14 +11,16 @@ public class Application {
         InputValidator inputValidator = new InputValidator();
         InputView inputView = new InputView(inputValidator);
         OutputView outputView = new OutputView();
-        LottoGenerator lottoGenerator = new LottoGenerator();
-        LottoRepository lottoRepository = new LottoRepository(lottoGenerator);
+
+        LottoRepository lottoRepository = new LottoRepository();
 
         WinningLotto winningLotto = new WinningLotto();
         LottoResult lottoResult = new LottoResult();
         LottoResultCalculator lottoResultCalculator = new LottoResultCalculator(winningLotto, lottoResult);
+        RandomValueGenerator randomValueGenerator = new RandomValueGenerator();
+        LottoGenerator lottoGenerator = new LottoGenerator(randomValueGenerator);
 
-        LottoService lottoService = new LottoService(lottoRepository, lottoResultCalculator);
+        LottoService lottoService = new LottoService(lottoRepository, lottoResultCalculator, lottoGenerator);
         LottoController lottoController = new LottoController(inputView, outputView, lottoService);
 
         lottoController.run();

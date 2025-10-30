@@ -15,12 +15,12 @@ public class InputView {
         this.inputValidator = inputValidator;
     }
 
-    public int getPriceofLottos(){
+    public int getInteger(){
         String value = getInput().trim();
         return inputValidator.validatePriceofLottos(value);
     }
 
-    public List<Integer> getWinningNumbers(){
+    public List<Integer> getListOfNumbers(){
         return null;
     }
 

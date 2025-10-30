@@ -4,9 +4,10 @@ import java.util.ArrayList;
 
 public class LottoRepository {
     private ArrayList<Lotto> lottos;
-    private LottoGenerator lottoGenerator;
-    public LottoRepository(LottoGenerator lottoGenerator) {
+
+    public LottoRepository() {
         this.lottos = new ArrayList<>();
-        this.lottoGenerator = lottoGenerator;
     }
+
+
 }
