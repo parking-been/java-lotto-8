@@ -16,6 +16,37 @@ public class LottoController {
     }
 
     public void run(){
+        prepareLottoGame();
+        displayIssuedLottos();
+        displayWinningResults();
+        displayProfitRate();
+    }
+
+    //발행한 로또 수량 및 번호 출력
+    private void displayIssuedLottos(){
+
+    }
+    //당첨 내역 출력
+    private void displayWinningResults(){
+
+    }
+    //수익률 출력
+    private void displayProfitRate(){
+
+    }
+
+    private void prepareLottoGame(){
+        buyLottos();
+        getLuckNumbers();
+    }
+
+    //로또 구매 - 입출력 받기
+    private void buyLottos(){
+        
+    }
+
+    //당첨 번호 받기
+    private void getLuckNumbers(){
 
     }
 
