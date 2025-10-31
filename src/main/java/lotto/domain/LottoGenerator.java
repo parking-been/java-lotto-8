@@ -32,7 +32,6 @@ public class LottoGenerator {
 
     private Lotto createLotto(){
         List<Integer> randomNumbers = randomValueGenerator.getRandomNumbers();
-        LottoNumbersValidator.lottoNumbersValidator(randomNumbers);
         return new Lotto(randomNumbers);
     }
 

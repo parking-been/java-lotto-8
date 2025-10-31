@@ -2,6 +2,7 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class OutputView {
             5개 일치 (1,500,000원) - %d개
             5개 일치, 보너스 볼 일치 (30,000,000원) - %d개
             6개 일치 (2,000,000,000원) - %d개""";
-    public static final String OUTPUT_PROFIT_RATE = "총 수익률은 %.2f%%입니다.";
+    public static final String OUTPUT_PROFIT_RATE = "총 수익률은 %.1f%%입니다.";
 
     public void printInputMoneyMessage(){
         System.out.println(INPUT_MONEY_MESSAGE);
@@ -35,7 +36,7 @@ public class OutputView {
     public void printIssuedLottos(List<Lotto> lottos){
         System.out.printf(OUTPUT_NUM_OF_LOTTOS,lottos.size());
         for (Lotto lotto : lottos){
-            List<Integer> numbers = lotto.getNumbers();
+            List<Integer> numbers = new ArrayList<>(lotto.getNumbers());
             Collections.sort(numbers);
             System.out.println(numbers);
         }
