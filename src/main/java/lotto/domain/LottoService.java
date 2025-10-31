@@ -44,4 +44,8 @@ public class LottoService {
     public int getTotalReword(){
         return lottoResult.getTotalReword();
     }
+
+    public int getTotalPaid(){
+        return 0;
+    }
 }

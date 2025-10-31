@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LottoResult {
-    private static final int RANK_COUNT = 6;
+    private static final int RANK_COUNT = 5;
     private int[] score = new int[RANK_COUNT];
     private static final int[][] RANKING_POLICYS = {
             {6,-1}, //1등
