@@ -10,7 +10,6 @@ public class LottoRules {
     public static final int LOWER_BOUND = 1;
     public static final int UPPER_BOUND = 45;
     public static final int TOTAL_COUNT = 6;
-    private static final boolean DUPLICATE_FLAG = false;
 
     public static void lottoNumbersValidator(List<Integer> numbers){
         validateLength(numbers);
@@ -20,8 +19,12 @@ public class LottoRules {
         }
     }
 
-    public static void bonusNumberValidator(int number){
+    public static void lottoNumbersAndBonusNumberValidator(List<Integer> numbers, int number){
+        lottoNumbersValidator(numbers);
         validateLowAndUpperBound(number);
+        if (numbers.contains(number)){
+            throw new IllegalArgumentException(ErrorMessage.INVALID_LUCKY_NUMBERS_CONTAINS_BONUS_NUMBER.getMessage());
+        }
     }
 
     private static void validateDuplicate(List<Integer> numbers){

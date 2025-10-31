@@ -8,8 +8,8 @@ public class WinningLotto {
     private int bonusNumber;
 
     public void saveAll(List<Integer> luckyNumbers, int bonusNumber){
-        LottoRules.lottoNumbersValidator(luckyNumbers);
-        LottoRules.bonusNumberValidator(bonusNumber);
+        //LottoRules.lottoNumbersValidator(luckyNumbers);
+        LottoRules.lottoNumbersAndBonusNumberValidator(luckyNumbers, bonusNumber);
         this.luckyNumbers = new ArrayList<>();
         this.luckyNumbers.addAll(luckyNumbers);
         this.bonusNumber = bonusNumber;
