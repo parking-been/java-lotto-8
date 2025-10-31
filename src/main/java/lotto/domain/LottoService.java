@@ -27,6 +27,8 @@ public class LottoService {
     }
 
     public void setWinningLotto(List<Integer> luckyNumbers, int bonusNumber){
+        LottoNumbersValidator.lottoNumbersValidator(luckyNumbers);
+        LottoNumbersValidator.bonusNumberValidator(bonusNumber);
         winningLotto.saveAll(luckyNumbers,bonusNumber);
     }
 
