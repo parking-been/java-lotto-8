@@ -40,7 +40,7 @@ public class LottoController {
     }
     //수익률 출력
     private void displayProfitRate(){
-
+        outputView.printProfitRate(lottoService.calculateProfitRate());
     }
 
     private void prepareLottoGame(){

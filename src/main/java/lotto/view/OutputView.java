@@ -17,8 +17,9 @@ public class OutputView {
             4개 일치 (50,000원) - %d개
             5개 일치 (1,500,000원) - %d개
             5개 일치, 보너스 볼 일치 (30,000,000원) - %d개
-            6개 일치 (2,000,000,000원) - %d개
-            """;
+            6개 일치 (2,000,000,000원) - %d개""";
+    public static final String OUTPUT_PROFIT_RATE = "총 수익률은 %.2f%%입니다.";
+
     public void printInputMoneyMessage(){
         System.out.println(INPUT_MONEY_MESSAGE);
     }
@@ -42,5 +43,9 @@ public class OutputView {
         List<Integer> reversed = score.reversed();
         String result = String.format(OUTPUT_PRINT_REUSLTS, reversed.toArray());
         System.out.println(result);
+    }
+
+    public void printProfitRate(double rate){
+        System.out.printf(OUTPUT_PROFIT_RATE,rate);
     }
 }

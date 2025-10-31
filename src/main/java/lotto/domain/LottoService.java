@@ -8,7 +8,7 @@ public class LottoService {
     private LottoGenerator lottoGenerator;
     private LottoResult lottoResult;
     private WinningLotto winningLotto;
-
+    private int paidmoney;
     public LottoService(LottoRepository lottoRepository, LottoGenerator lottoGenerator, WinningLotto winningLotto, LottoResult lottoResult) {
         this.lottoRepository = lottoRepository;
         this.lottoGenerator = lottoGenerator;
@@ -19,6 +19,7 @@ public class LottoService {
     public void buyLottos(int price){
         ArrayList<Lotto> listOfLottos = lottoGenerator.createLottos(price);
         lottoRepository.saveAll(listOfLottos);
+        paidmoney = price;
     }
 
     public List<Lotto> getAllLottos(){
@@ -41,11 +42,15 @@ public class LottoService {
         return lottoResult.getScore();
     }
 
-    public int getTotalReword(){
+    public double calculateProfitRate(){
+        return ((double) getTotalReword() / getTotalPaid())*100;
+    }
+
+    private int getTotalReword(){
         return lottoResult.getTotalReword();
     }
 
-    public int getTotalPaid(){
-        return 0;
+    private int getTotalPaid(){
+        return paidmoney;
     }
 }
