@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import lotto.exception.ErrorMessage;
 
 import java.util.ArrayList;
@@ -7,17 +8,12 @@ import java.util.List;
 
 public class LottoGenerator {
     private final int LOTTO_PRICE = 1000;
-    private final RandomValueGenerator randomValueGenerator;
-
-    public LottoGenerator(RandomValueGenerator randomValueGenerator) {
-        this.randomValueGenerator = randomValueGenerator;
-    }
 
     public ArrayList<Lotto> createLottos(int price){
         int countOfLottos = validateCount(price);
         ArrayList<Lotto> newLottos = new ArrayList<>();
         for (int i=0;i<countOfLottos;i++){
-            newLottos.add(createLotto());
+            newLottos.add(createLottowithRandomValue());
         }
         return newLottos;
     }
@@ -30,8 +26,12 @@ public class LottoGenerator {
         return price/LOTTO_PRICE;
     }
 
-    private Lotto createLotto(){
-        List<Integer> randomNumbers = randomValueGenerator.getRandomNumbers();
+    private Lotto createLottowithRandomValue(){
+        //List<Integer> randomNumbers = randomValueGenerator.getRandomNumbers();
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
+                LottoRules.LOWER_BOUND,
+                LottoRules.UPPER_BOUND,
+                LottoRules.TOTAL_COUNT);
         return new Lotto(randomNumbers);
     }
 

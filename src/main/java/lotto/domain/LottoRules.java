@@ -6,10 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class LottoNumbersValidator {
-    private static final int LOWER_BOUND = 1;
-    private static final int UPPER_BOUND = 45;
-    private static final int TOTAL_COUNT = 6;
+public class LottoRules {
+    public static final int LOWER_BOUND = 1;
+    public static final int UPPER_BOUND = 45;
+    public static final int TOTAL_COUNT = 6;
     private static final boolean DUPLICATE_FLAG = false;
 
     public static void lottoNumbersValidator(List<Integer> numbers){

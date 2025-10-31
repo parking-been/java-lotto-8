@@ -24,8 +24,7 @@ public class Application {
         LottoRepository lottoRepository = new LottoRepository();
         WinningLotto winningLotto = new WinningLotto();
         LottoResult lottoResult = new LottoResult();
-        RandomValueGenerator randomValueGenerator = new RandomValueGenerator();
-        LottoGenerator lottoGenerator = new LottoGenerator(randomValueGenerator);
+        LottoGenerator lottoGenerator = new LottoGenerator();
         LottoService lottoService = new LottoService(lottoRepository, lottoGenerator, winningLotto, lottoResult);
         LottoController lottoController = new LottoController(inputView, outputView, lottoService);
 

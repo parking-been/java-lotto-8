@@ -17,7 +17,7 @@ class LottoNumbersValidatorTest {
     @Test
     @DisplayName("예외에 걸리지 않는 값이 들어갔을때")
     void 로또_번호_검증(){
-        LottoNumbersValidator.lottoNumbersValidator(List.of(1,2,3,4,5,6));
+        LottoRules.lottoNumbersValidator(List.of(1,2,3,4,5,6));
     }
 
     @ParameterizedTest
@@ -30,7 +30,7 @@ class LottoNumbersValidatorTest {
                                     .toList();
         IllegalArgumentException e = assertThrows(
                 IllegalArgumentException.class,
-                ()-> LottoNumbersValidator.lottoNumbersValidator(array)
+                ()-> LottoRules.lottoNumbersValidator(array)
         );
 
         assertThat(e.getMessage()).isEqualTo(expectedError.getMessage());
