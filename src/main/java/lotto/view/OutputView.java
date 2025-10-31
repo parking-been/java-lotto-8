@@ -35,7 +35,9 @@ public class OutputView {
     public void printIssuedLottos(List<Lotto> lottos){
         System.out.printf(OUTPUT_NUM_OF_LOTTOS,lottos.size());
         for (Lotto lotto : lottos){
-            System.out.println(lotto.getNumbers());
+            List<Integer> numbers = lotto.getNumbers();
+            Collections.sort(numbers);
+            System.out.println(numbers);
         }
     }
 
