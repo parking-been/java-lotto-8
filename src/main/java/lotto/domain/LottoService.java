@@ -2,18 +2,20 @@ package lotto.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class LottoService {
     private LottoRepository lottoRepository;
     private LottoGenerator lottoGenerator;
-    private LottoResult lottoResult;
     private WinningLotto winningLotto;
+    private LottoResult lottoResult;
     private int paidmoney;
     public LottoService(LottoRepository lottoRepository, LottoGenerator lottoGenerator, WinningLotto winningLotto, LottoResult lottoResult) {
         this.lottoRepository = lottoRepository;
         this.lottoGenerator = lottoGenerator;
-        this.lottoResult = lottoResult;
         this.winningLotto = winningLotto;
+        this.lottoResult = lottoResult;
+
     }
 
     public void buyLottos(int price){
@@ -34,11 +36,12 @@ public class LottoService {
         List<Lotto> lottos = lottoRepository.findAll();
         for (Lotto lotto: lottos){
             int[] result = winningLotto.compareWithLotto(lotto);
+            //lottoResult.updateScore(result[0],result[1]);
             lottoResult.updateScore(result[0],result[1]);
         }
     }
 
-    public List<Integer> getScore(){
+    public Map<Rank, Integer> getScore(){
         return lottoResult.getScore();
     }
 
@@ -46,7 +49,7 @@ public class LottoService {
         return ((double) getTotalReword() / getTotalPaid())*100;
     }
 
-    private int getTotalReword(){
+    private long getTotalReword(){
         return lottoResult.getTotalReword();
     }
 

@@ -1,50 +1,48 @@
 package lotto.domain;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LottoResult {
-    private static final int RANK_COUNT = 5;
-    private int[] score = new int[RANK_COUNT];
-    private static final int[][] RANKING_POLICYS = {
-            {6,-1}, //1등
-            {5,1},  //2등
-            {5,0},  //3등
-            {4,-1}, //4등
-            {3,-1} //5등
-    };
-    private static final int[] REWORD_POLICYS = {
-            2000000000,
-            30000000,
-            1500000,
-            50000,
-            5000
-    };
+    private Map<Rank,Integer> score = new HashMap<>();
 
-    public void updateScore(int correctCountOfNumbers, int correctCountOfBonus){
-        for (int i=0;i<RANK_COUNT;i++){
-            if (RANKING_POLICYS[i][0]!=correctCountOfNumbers){
-                continue;
-            }
-            if (RANKING_POLICYS[i][1]==-1 || (RANKING_POLICYS[i][1]==correctCountOfBonus)){
-                score[i]+=1;
-                return;
-            }
+    public LottoResult() {
+        for (Rank r : Rank.values()){
+            score.put(r,0);
         }
     }
 
-    public List<Integer> getScore() {
-        return Arrays.stream(score)
-                .boxed()
-                .collect(Collectors.toList());
+    public LottoResult(Map<Rank,Integer> nscore){
+        this.score = nscore;
     }
 
-    public int getTotalReword(){
-        int sum = 0;
-        for(int i=0;i<RANK_COUNT;i++){
-            sum +=score[i]*REWORD_POLICYS[i];
+    public Map<Rank, Integer> getScore() {
+        return score;
+    }
+
+    public void updateScore(int correctCountOfNumbers, int correctCountOfBonus){
+        Rank rank = checkRankOfResult(correctCountOfNumbers, correctCountOfBonus);
+        if (rank!=null){
+            score.put(rank,score.get(rank)+1);
+        }
+    }
+
+    public Rank checkRankOfResult(int correctCountOfNumbers, int correctCountOfBonus){
+        for (Rank r : Rank.values()){
+            if (r.getHitCount() != correctCountOfNumbers){
+                continue;
+            }
+            if (r.getHitBonus()==-1 || (r.getHitBonus()==correctCountOfBonus)){
+                return r;
+            }
+        }
+        return null;
+    }
+
+    public long getTotalReword(){
+        long sum = 0;
+        for (Rank r : Rank.values()){
+            sum+=score.get(r)*r.getReward();
         }
         return sum;
     }

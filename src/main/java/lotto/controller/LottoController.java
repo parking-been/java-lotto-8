@@ -36,7 +36,7 @@ public class LottoController {
 
     //당첨 내역 출력
     private void displayTheResults(){
-        outputView.printTheResults(lottoService.getScore());
+        outputView.printTheResultsMap(lottoService.getScore());
     }
     //수익률 출력
     private void displayProfitRate(){

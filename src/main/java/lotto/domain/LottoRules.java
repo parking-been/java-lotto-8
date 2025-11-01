@@ -11,6 +11,7 @@ public class LottoRules {
     public static final int UPPER_BOUND = 45;
     public static final int TOTAL_COUNT = 6;
 
+
     public static void lottoNumbersValidator(List<Integer> numbers){
         validateLength(numbers);
         validateDuplicate(numbers);
