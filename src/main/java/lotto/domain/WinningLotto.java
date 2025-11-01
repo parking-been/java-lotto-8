@@ -8,14 +8,12 @@ public class WinningLotto {
     private int bonusNumber;
 
     public void saveAll(List<Integer> luckyNumbers, int bonusNumber){
-        //LottoRules.lottoNumbersValidator(luckyNumbers);
         LottoRules.lottoNumbersAndBonusNumberValidator(luckyNumbers, bonusNumber);
         this.luckyNumbers = List.copyOf(luckyNumbers);
         this.bonusNumber = bonusNumber;
     }
 
     public int[] compareWithLotto(Lotto lotto){
-
         List<Integer> numberList = lotto.getNumbers();
         int count = 0;
         int flag = 0;
@@ -23,9 +21,10 @@ public class WinningLotto {
             if (luckyNumbers.contains(number)){
                 count+=1;
             }
-            if (bonusNumber==number) flag = 1;
+            if (bonusNumber==number) {
+                flag = 1;
+            }
         }
-        int[] result = {count, flag};
-        return result;
+        return new int[] {count, flag};
     }
 }

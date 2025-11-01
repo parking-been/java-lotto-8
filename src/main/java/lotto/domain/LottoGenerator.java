@@ -26,7 +26,6 @@ public class LottoGenerator {
     }
 
     private Lotto createLottowithRandomValue(){
-        //List<Integer> randomNumbers = randomValueGenerator.getRandomNumbers();
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
                 LottoRules.LOWER_BOUND,
                 LottoRules.UPPER_BOUND,

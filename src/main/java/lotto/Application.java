@@ -27,7 +27,6 @@ public class Application {
         LottoGenerator lottoGenerator = new LottoGenerator();
         LottoService lottoService = new LottoService(lottoRepository, lottoGenerator, winningLotto, lottoResult_test);
         LottoController lottoController = new LottoController(inputView, outputView, lottoService);
-
         lottoController.run();
     }
 }

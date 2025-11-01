@@ -25,7 +25,6 @@ public class LottoController {
         displayProfitRate();
     }
 
-    //발행한 로또 수량 및 번호 출력
     private void displayIssuedLottos(){
         outputView.printIssuedLottos(lottoService.getAllLottos());
     }
@@ -34,11 +33,10 @@ public class LottoController {
         lottoService.calculateResult();
     }
 
-    //당첨 내역 출력
     private void displayTheResults(){
         outputView.printTheResultsMap(lottoService.getScore());
     }
-    //수익률 출력
+
     private void displayProfitRate(){
         outputView.printProfitRate(lottoService.calculateProfitRate());
     }
