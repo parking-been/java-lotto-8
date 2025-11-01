@@ -12,7 +12,7 @@ import java.util.List;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class LottoNumbersValidatorTest {
+class LottoRulesTest {
 
     @Test
     @DisplayName("예외에 걸리지 않는 값이 들어갔을때")

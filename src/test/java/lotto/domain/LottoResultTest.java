@@ -25,9 +25,11 @@ class LottoResultTest {
         lottoResult.updateScore(3,0);
         lottoResult.updateScore(5,0);
         lottoResult.updateScore(3,0);
+        lottoResult.updateScore(5,1);
+        lottoResult.updateScore(5,1);
         assertThat(lottoResult.getScore()).isEqualTo(Map.of(
                 Rank.First , 0,
-                Rank.Second, 0,
+                Rank.Second, 2,
                 Rank.Third, 1,
                 Rank.Fourth, 0,
                 Rank.Fifth, 2
