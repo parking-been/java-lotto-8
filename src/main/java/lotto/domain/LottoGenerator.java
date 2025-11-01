@@ -19,7 +19,6 @@ public class LottoGenerator {
     }
 
     private int validateCount(int price){
-        //1000원에 나누어 떨어지는가 확인
         if (price%LOTTO_PRICE!=0){
             throw new IllegalArgumentException(ErrorMessage.INVALID_PRICE_INPUT.getMessage());
         };

@@ -4,9 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LottoResult {
-    private Map<Rank,Integer> score = new HashMap<>();
+    private final Map<Rank,Integer> score;
 
     public LottoResult() {
+        score = new HashMap<>();
         for (Rank r : Rank.values()){
             score.put(r,0);
         }
@@ -17,7 +18,7 @@ public class LottoResult {
     }
 
     public Map<Rank, Integer> getScore() {
-        return score;
+        return Map.copyOf(score);
     }
 
     public void updateScore(int correctCountOfNumbers, int correctCountOfBonus){

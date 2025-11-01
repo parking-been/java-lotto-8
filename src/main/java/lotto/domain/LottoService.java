@@ -5,11 +5,11 @@ import java.util.List;
 import java.util.Map;
 
 public class LottoService {
-    private LottoRepository lottoRepository;
-    private LottoGenerator lottoGenerator;
-    private WinningLotto winningLotto;
-    private LottoResult lottoResult;
-    private int paidmoney;
+    private final LottoRepository lottoRepository;
+    private final LottoGenerator lottoGenerator;
+    private final WinningLotto winningLotto;
+    private final LottoResult lottoResult;
+    private int paidmoney = 0 ;
     public LottoService(LottoRepository lottoRepository, LottoGenerator lottoGenerator, WinningLotto winningLotto, LottoResult lottoResult) {
         this.lottoRepository = lottoRepository;
         this.lottoGenerator = lottoGenerator;
@@ -21,7 +21,7 @@ public class LottoService {
     public void buyLottos(int price){
         ArrayList<Lotto> listOfLottos = lottoGenerator.createLottos(price);
         lottoRepository.saveAll(listOfLottos);
-        paidmoney = price;
+        paidmoney += price;
     }
 
     public List<Lotto> getAllLottos(){
@@ -36,7 +36,6 @@ public class LottoService {
         List<Lotto> lottos = lottoRepository.findAll();
         for (Lotto lotto: lottos){
             int[] result = winningLotto.compareWithLotto(lotto);
-            //lottoResult.updateScore(result[0],result[1]);
             lottoResult.updateScore(result[0],result[1]);
         }
     }

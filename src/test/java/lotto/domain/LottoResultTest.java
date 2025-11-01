@@ -6,12 +6,12 @@ import java.util.Map;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-class LottoResult_testTest {
-    LottoResult lottoResult_test = new LottoResult();
+class LottoResultTest {
+    LottoResult lottoResult = new LottoResult();
 
     @Test
     void 생성확인(){
-        assertThat(lottoResult_test.getScore()).isEqualTo(Map.of(
+        assertThat(lottoResult.getScore()).isEqualTo(Map.of(
                 Rank.First , 0,
                 Rank.Second, 0,
                 Rank.Third, 0,
@@ -22,10 +22,10 @@ class LottoResult_testTest {
 
     @Test
     void 스코어_업데이트_확인(){
-        lottoResult_test.updateScore(3,0);
-        lottoResult_test.updateScore(5,0);
-        lottoResult_test.updateScore(3,0);
-        assertThat(lottoResult_test.getScore()).isEqualTo(Map.of(
+        lottoResult.updateScore(3,0);
+        lottoResult.updateScore(5,0);
+        lottoResult.updateScore(3,0);
+        assertThat(lottoResult.getScore()).isEqualTo(Map.of(
                 Rank.First , 0,
                 Rank.Second, 0,
                 Rank.Third, 1,

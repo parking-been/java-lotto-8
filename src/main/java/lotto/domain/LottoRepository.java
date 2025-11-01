@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LottoRepository {
-    private ArrayList<Lotto> lottos;
+    private final ArrayList<Lotto> lottos;
 
     public LottoRepository() {
         this.lottos = new ArrayList<>();

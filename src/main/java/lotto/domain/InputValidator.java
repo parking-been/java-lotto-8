@@ -27,6 +27,4 @@ public class InputValidator {
         return result;
     }
 
-    //아래는 private로 구성
-
 }

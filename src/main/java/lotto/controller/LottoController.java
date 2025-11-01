@@ -49,14 +49,12 @@ public class LottoController {
         getLuckyandBonusNumbers();
     }
 
-    //로또 구매
     private void buyLottos(){
         outputView.printInputMoneyMessage();
         int price = inputView.getInteger();
         lottoService.buyLottos(price);
     }
 
-    //당첨 번호 받기
     private void getLuckyandBonusNumbers(){
         outputView.printIputLuckyNumbers();
         List<Integer> luckyNumbers = inputView.getListOfNumbers();

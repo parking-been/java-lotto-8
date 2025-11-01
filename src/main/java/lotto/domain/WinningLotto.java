@@ -10,8 +10,7 @@ public class WinningLotto {
     public void saveAll(List<Integer> luckyNumbers, int bonusNumber){
         //LottoRules.lottoNumbersValidator(luckyNumbers);
         LottoRules.lottoNumbersAndBonusNumberValidator(luckyNumbers, bonusNumber);
-        this.luckyNumbers = new ArrayList<>();
-        this.luckyNumbers.addAll(luckyNumbers);
+        this.luckyNumbers = List.copyOf(luckyNumbers);
         this.bonusNumber = bonusNumber;
     }
 
