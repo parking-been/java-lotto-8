@@ -9,7 +9,7 @@ public class LottoService {
     private final LottoGenerator lottoGenerator;
     private final WinningLotto winningLotto;
     private final LottoResult lottoResult;
-    private int paidMoney = 0 ;
+    private int paidMoney = 0;
 
     public LottoService(LottoRepository lottoRepository, LottoGenerator lottoGenerator, WinningLotto winningLotto, LottoResult lottoResult) {
         this.lottoRepository = lottoRepository;
@@ -19,41 +19,41 @@ public class LottoService {
 
     }
 
-    public void buyLottos(int price){
+    public void buyLottos(int price) {
         ArrayList<Lotto> listOfLottos = lottoGenerator.createLottos(price);
         lottoRepository.saveAll(listOfLottos);
         paidMoney += price;
     }
 
-    public List<Lotto> getAllLottos(){
+    public List<Lotto> getAllLottos() {
         return lottoRepository.findAll();
     }
 
-    public void setWinningLotto(List<Integer> luckyNumbers, int bonusNumber){
-        winningLotto.saveAll(luckyNumbers,bonusNumber);
+    public void setWinningLotto(List<Integer> luckyNumbers, int bonusNumber) {
+        winningLotto.saveAll(luckyNumbers, bonusNumber);
     }
 
-    public void calculateResult(){
+    public void calculateResult() {
         List<Lotto> lottos = lottoRepository.findAll();
-        for (Lotto lotto: lottos){
+        for (Lotto lotto : lottos) {
             int[] result = winningLotto.compareWithLotto(lotto);
-            lottoResult.updateScore(result[0],result[1]);
+            lottoResult.updateScore(result[0], result[1]);
         }
     }
 
-    public Map<Rank, Integer> getScore(){
+    public Map<Rank, Integer> getScore() {
         return lottoResult.getScore();
     }
 
-    public double calculateProfitRate(){
-        return ((double) getTotalReword() / getTotalPaid())*100;
+    public double calculateProfitRate() {
+        return ((double) getTotalReword() / getTotalPaid()) * 100;
     }
 
-    private long getTotalReword(){
+    private long getTotalReword() {
         return lottoResult.getTotalReword();
     }
 
-    private int getTotalPaid(){
+    private int getTotalPaid() {
         return paidMoney;
     }
 }

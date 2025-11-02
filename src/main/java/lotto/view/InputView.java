@@ -15,19 +15,19 @@ public class InputView {
         this.inputValidator = inputValidator;
     }
 
-    public int getInteger(){
+    public int getInteger() {
         String value = getInput().trim();
         return inputValidator.validateStringToInteger(value);
     }
 
-    public List<Integer> getListOfNumbers(){
+    public List<Integer> getListOfNumbers() {
         String value = getInput().trim();
         return inputValidator.validateStringToIntList(value);
     }
 
 
-    public String getInput(){
-        try{
+    public String getInput() {
+        try {
             return Console.readLine();
         } catch (NoSuchElementException e) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NULL_INPUT.getMessage());

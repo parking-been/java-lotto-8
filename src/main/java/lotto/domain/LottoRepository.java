@@ -10,15 +10,15 @@ public class LottoRepository {
         this.lottos = new ArrayList<>();
     }
 
-    public void saveAll(List<Lotto> lottos){
+    public void saveAll(List<Lotto> lottos) {
         this.lottos.addAll(lottos);
     }
 
-    public List<Lotto> findAll(){
+    public List<Lotto> findAll() {
         return List.copyOf(lottos);
     }
 
-    public int getSize(){
+    public int getSize() {
         return lottos.size();
     }
 }

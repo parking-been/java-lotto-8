@@ -15,7 +15,7 @@ class LottoGeneratorTest {
     LottoGenerator lottoGenerator = new LottoGenerator();
     
     @Test
-    void 로또_레포지토리_생성_테스트(){
+    void 로또_레포지토리_생성_테스트() {
 
         assertRandomUniqueNumbersInRangeTest(
                 () -> {
@@ -29,7 +29,7 @@ class LottoGeneratorTest {
 
     @Test
     @DisplayName("입력 금액이 1000원 단위로 떨어지지 않을때 예외 처리")
-    void 로또_레포지토리_생성_예외_테스트(){
+    void 로또_레포지토리_생성_예외_테스트() {
 
         assertRandomUniqueNumbersInRangeTest(
                 () -> {

@@ -16,25 +16,23 @@ class LottoRulesTest {
 
     @Test
     @DisplayName("예외에 걸리지 않는 값이 들어갔을때")
-    void 로또_번호_검증(){
-        LottoRules.lottoNumbersValidator(List.of(1,2,3,4,5,6));
+    void 로또_번호_검증() {
+        LottoRules.lottoNumbersValidator(List.of(1, 2, 3, 4, 5, 6));
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/fail/lottoNumbersValidation.csv", numLinesToSkip = 1)
     @DisplayName("숫자의 범위가 넘어갔을 때, 개수가 맞지 않을 때, 중복이 발생할 때")
-    void 로또_번호_검증_예외_확인(String input, ErrorMessage expectedError){
+    void 로또_번호_검증_예외_확인(String input, ErrorMessage expectedError) {
 
         List<Integer> array = Arrays.stream(input.split(","))
                                     .map(Integer::parseInt)
                                     .toList();
         IllegalArgumentException e = assertThrows(
                 IllegalArgumentException.class,
-                ()-> LottoRules.lottoNumbersValidator(array)
+                () -> LottoRules.lottoNumbersValidator(array)
         );
-
         assertThat(e.getMessage()).isEqualTo(expectedError.getMessage());
-
     }
 
 

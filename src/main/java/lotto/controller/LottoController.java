@@ -18,47 +18,47 @@ public class LottoController {
         this.lottoService = lottoService;
     }
 
-    public void run(){
+    public void run() {
         prepareLottoGame();
         calculateTheResults();
         displayTheResults();
         displayProfitRate();
     }
 
-    private void displayIssuedLottos(){
+    private void displayIssuedLottos() {
         outputView.printIssuedLottos(lottoService.getAllLottos());
     }
 
-    private void calculateTheResults(){
+    private void calculateTheResults() {
         lottoService.calculateResult();
     }
 
-    private void displayTheResults(){
+    private void displayTheResults() {
         outputView.printTheResultsMap(lottoService.getScore());
     }
 
-    private void displayProfitRate(){
+    private void displayProfitRate() {
         outputView.printProfitRate(lottoService.calculateProfitRate());
     }
 
-    private void prepareLottoGame(){
+    private void prepareLottoGame() {
         buyLottos();
         displayIssuedLottos();
         getLuckyandBonusNumbers();
     }
 
-    private void buyLottos(){
+    private void buyLottos() {
         outputView.printInputMoneyMessage();
         int price = inputView.getInteger();
         lottoService.buyLottos(price);
     }
 
-    private void getLuckyandBonusNumbers(){
+    private void getLuckyandBonusNumbers() {
         outputView.printIputLuckyNumbers();
         List<Integer> luckyNumbers = inputView.getListOfNumbers();
         outputView.printInputBonusNumber();
         int bonusNumber = inputView.getInteger();
-        lottoService.setWinningLotto(luckyNumbers,bonusNumber);
+        lottoService.setWinningLotto(luckyNumbers, bonusNumber);
     }
 
 }

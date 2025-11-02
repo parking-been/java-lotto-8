@@ -9,23 +9,23 @@ import java.util.List;
 public class LottoGenerator {
     private final int LOTTO_PRICE = 1000;
 
-    public ArrayList<Lotto> createLottos(int price){
+    public ArrayList<Lotto> createLottos(int price) {
         int countOfLottos = validateCount(price);
         ArrayList<Lotto> newLottos = new ArrayList<>();
-        for (int i=0;i<countOfLottos;i++){
+        for (int i = 0; i < countOfLottos; i++) {
             newLottos.add(createLottowithRandomValue());
         }
         return newLottos;
     }
 
-    private int validateCount(int price){
-        if (price%LOTTO_PRICE!=0){
+    private int validateCount(int price) {
+        if (price%LOTTO_PRICE != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_PRICE_INPUT.getMessage());
         };
         return price/LOTTO_PRICE;
     }
 
-    private Lotto createLottowithRandomValue(){
+    private Lotto createLottowithRandomValue() {
         List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(
                 LottoRules.LOWER_BOUND,
                 LottoRules.UPPER_BOUND,

@@ -8,12 +8,12 @@ public class LottoResult {
 
     public LottoResult() {
         score = new HashMap<>();
-        for (Rank r : Rank.values()){
+        for (Rank r : Rank.values()) {
             score.put(r,0);
         }
     }
 
-    public LottoResult(Map<Rank,Integer> nscore){
+    public LottoResult(Map<Rank, Integer> nscore) {
         this.score = nscore;
     }
 
@@ -21,29 +21,29 @@ public class LottoResult {
         return Map.copyOf(score);
     }
 
-    public void updateScore(int correctCountOfNumbers, int correctCountOfBonus){
+    public void updateScore(int correctCountOfNumbers, int correctCountOfBonus) {
         Rank rank = checkRankOfResult(correctCountOfNumbers, correctCountOfBonus);
-        if (rank!=null){
+        if (rank != null) {
             score.put(rank,score.get(rank)+1);
         }
     }
 
-    public Rank checkRankOfResult(int correctCountOfNumbers, int correctCountOfBonus){
-        for (Rank r : Rank.values()){
-            if (r.getHitCount() != correctCountOfNumbers){
+    public Rank checkRankOfResult(int correctCountOfNumbers, int correctCountOfBonus) {
+        for (Rank r : Rank.values()) {
+            if (r.getHitCount() != correctCountOfNumbers) {
                 continue;
             }
-            if (r.getHitBonus()==-1 || (r.getHitBonus()==correctCountOfBonus)){
+            if (r.getHitBonus() == -1 || (r.getHitBonus() == correctCountOfBonus)) {
                 return r;
             }
         }
         return null;
     }
 
-    public long getTotalReword(){
+    public long getTotalReword() {
         long sum = 0;
-        for (Rank r : Rank.values()){
-            sum+=score.get(r)*r.getReward();
+        for (Rank r : Rank.values()) {
+            sum += score.get(r) * r.getReward();
         }
         return sum;
     }
